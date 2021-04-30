@@ -1,0 +1,23 @@
+[all:vars]
+###############################################################################
+# Required configuration variables                                            #
+###############################################################################
+
+# (Required) Web server holding the iso images we will be testing
+webserver=http://MYWEBSERVER/
+
+# (Required) Iso image to test, it's recommended to test with  iso over 500Mb  and under 200 mb with relative path to root of webserver
+iso="/bigiso.iso"
+
+# (Optional) Disable RedFish inspection to intelligently choose between IPMI or RedFish protocol.
+# By default this feature is enabled and set to true. Uncomment below to disable and use IPMI.
+#redfish_inspection=false
+
+# (Optional) Enable RedFish VirtualMedia/iDRAC VirtualMedia
+#enable_virtualmedia=True
+
+# List of servers to test for BMC status
+[servers]
+MYHOSTFQDN bmc_user=BMCUSER bmc_password=BMCPASSWORD bmc_address=MYIDRACIP ipmi_port=623 vendor=Dell
+MYHOSTFQDN2 bmc_user=BMCUSER bmc_password=BMCPASSWORD bmc_address=MYILOIP ipmi_port=623 vendor=HPE
+MYHOSTFQDN3 bmc_user=BMCUSER bmc_password=BMCPASSWORD bmc_address=MYBMCIP ipmi_port=623 vendor=SuperMicro

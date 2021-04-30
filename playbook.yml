@@ -1,0 +1,6 @@
+---
+- name: Test BMC status on servers
+  hosts: servers
+  roles:
+  - remoteloadiso
+  - validateiso

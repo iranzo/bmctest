@@ -4,5 +4,15 @@
   "maxRequests": 5,
   "ignoreDigits": true,
   "lang": "en",
-  "dictionary": ["BMC", "repo", "RHEL", "ISOs", "Ansible"]
+  "dictionary": [
+    "BMC",
+    "repo",
+    "RHEL",
+    "ISOs",
+    "Ansible",
+    "playbook",
+    "GitHub",
+    "commitizen",
+    "CI"
+  ]
 }

@@ -1,0 +1,28 @@
+---
+# tasks file for validate iso
+
+- name: Mount CDROM device in server
+  mount:
+    path: /mnt/
+    src: /dev/cdrom
+    fstype: iso9660
+    opts: ro,noauto
+    state: mounted
+    boot: no
+
+- name: List files in CDROM device
+  command: "ls /mnt/"
+  register: dvdcontents
+
+- name: Output contents
+  debug:
+    msg: "{{ dvdcontents.stdout}}"
+
+- name: Unmount CDROM device in server
+  mount:
+    path: /mnt/
+    src: /dev/cdrom
+    fstype: iso9660
+    opts: ro,noauto
+    state: absent
+    boot: no

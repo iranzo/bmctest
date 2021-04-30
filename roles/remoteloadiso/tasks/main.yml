@@ -1,17 +1,15 @@
 ---
 # tasks file for boot_iso
 
+- name: Output vendor for our system
+  debug:
+    msg: "{{ vendor }}"
+
 - include_tasks: dell.yml
-  with_items:
-    - "{{ groups['servers'] }}"
-  when: hostvars[item]['vendor'] == 'Dell'
+  when: vendor == 'Dell'
 
 - include_tasks: hpe.yml
-  with_items:
-    - "{{ groups['servers'] }}"
-  when: hostvars[item]['vendor'] == 'HPE'
+  when: vendor == 'HPE'
 
 - include_tasks: supermicro.yml
-  with_items:
-    - "{{ groups['servers'] }}"
-  when: hostvars[item]['vendor'] == 'SuperMicro'
+  when: vendor == 'SuperMicro'

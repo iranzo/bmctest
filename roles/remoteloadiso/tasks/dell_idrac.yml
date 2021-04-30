@@ -3,18 +3,18 @@
   block:
     - name: Racadm container disconnect ISO
       containers.podman.podman_container:
-        name: "{{ hostvars[item]['bmc_address'] }}-rac-image"
+        name: "{{ bmc_address }}-rac-image"
         network: host
         image: quay.io/iranzo/racadm
         state: started
-        rm: false
-        command: ["-h", "{{ hostvars[item]['bmc_address'] }}", "-u", "{{ hostvars[item]['bmc_user'] }}", "-p", "{{ hostvars[item]['bmc_password'] }}", "-d"]
+        rm: true
+        command: ["-h", "{{ bmc_address }}", "-u", "{{ bmc_user }}", "-p", "{{ bmc_password }}", "-d"]
 
     - name: Racadm container to mount ISO
       containers.podman.podman_container:
-        name: "{{ hostvars[item]['bmc_address'] }}-rac-image"
+        name: "{{ bmc_address }}-rac-image"
         network: host
         image: quay.io/iranzo/racadm
         state: started
-        rm: false
-        command: ["-h", "{{ hostvars[item]['bmc_address'] }}", "-u", "{{ hostvars[item]['bmc_user'] }}", "-p", "{{ hostvars[item]['bmc_password'] }}", "-i", "{{ webserver }}/{{ iso }}"]
+        rm: true
+        command: ["-h", "{{ bmc_address }}", "-u", "{{ bmc_user }}", "-p", "{{ bmc_password }}", "-i", "{{ webserver }}/{{ iso }}"]

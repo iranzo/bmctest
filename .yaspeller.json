@@ -13,6 +13,9 @@
     "playbook",
     "GitHub",
     "commitizen",
-    "CI"
+    "CI",
+    "VMs",
+    "CentOS",
+    "podman"
   ]
 }

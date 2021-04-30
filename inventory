@@ -18,6 +18,6 @@ iso="/bigiso.iso"
 
 # List of servers to test for BMC status
 [servers]
-MYHOSTFQDN bmc_user=BMCUSER bmc_password=BMCPASSWORD bmc_address=MYIDRACIP ipmi_port=623 vendor=Dell
-MYHOSTFQDN2 bmc_user=BMCUSER bmc_password=BMCPASSWORD bmc_address=MYILOIP ipmi_port=623 vendor=HPE
-MYHOSTFQDN3 bmc_user=BMCUSER bmc_password=BMCPASSWORD bmc_address=MYBMCIP ipmi_port=623 vendor=SuperMicro
+MYHOSTFQDN bmc_user=BMCUSER bmc_password=BMCPASSWORD bmc_address=MYIDRACIP vendor=Dell
+MYHOSTFQDN2 bmc_user=BMCUSER bmc_password=BMCPASSWORD bmc_address=MYILOIP vendor=HPE
+MYHOSTFQDN3 bmc_user=BMCUSER bmc_password=BMCPASSWORD bmc_address=MYBMCIP vendor=SuperMicro

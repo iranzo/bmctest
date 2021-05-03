@@ -20,3 +20,7 @@ This playbook is based on the ones available at:
 # Execution
 
 Run `ansible-playbook -i inventory playbook.yml` to validate the server.
+
+# TODO
+
+- hpilo interaction requires installation of python-hpilo module from the host executing (that's why the task is now delegated to localhost)

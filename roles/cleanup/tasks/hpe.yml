@@ -1,0 +1,10 @@
+---
+- name: Umount Live ISO, Boot into Live ISO (HPE servers)
+  block:
+    - name: HPE disconnect existing Virtual Media
+      hpilo_boot:
+        host: "{{ bmc_address }}"
+        login: "{{ bmc_user }}"
+        password: "{{ bmc_password }}"
+        state: disconnect
+      delegate_to: localhost

@@ -3,15 +3,22 @@
   block:
     - name: HPE disconnect existing Virtual Media
       hpilo_boot:
-        host: "{{ hostvars[item]['bmc_address'] }}"
-        login: "{{ hostvars[item]['bmc_user'] }}"
-        password: "{{ hostvars[item]['bmc_password'] }}"
-        state: "disconnect"
+        host: "{{ bmc_address }}"
+        login: "{{ bmc_user }}"
+        password: "{{ bmc_password }}"
+        state: disconnect
+      delegate_to: localhost
 
     - name: HPE task to boot a system using an ISO
       hpilo_boot:
-        host: "{{ hostvars[item]['bmc_address'] }}"
-        login: "{{ hostvars[item]['bmc_user'] }}"
-        password: "{{ hostvars[item]['bmc_password'] }}"
+        host: "{{ bmc_address }}"
+        login: "{{ bmc_user }}"
+        password: "{{ bmc_password }}"
         image: "{{ webserver }}/{{ iso }}"
         media: cdrom
+        state: connect
+      delegate_to: localhost
+
+    - name: Pause for 30 seconds to media being inserted at OS
+      pause:
+        seconds: 30

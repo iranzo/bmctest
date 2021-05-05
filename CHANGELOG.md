@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/iranzo/bmctest/compare/1.0.0...1.1.0) (2021-05-05)
+
+### Features
+
+- delegate podman execution to local host to speed it up ([11fb080](https://github.com/iranzo/bmctest/commit/11fb080863e42441f2c10d1fe112116c1c013e9b))
+
 # 1.0.0 (2021-05-03)
 
 ### Bug Fixes

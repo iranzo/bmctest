@@ -11,6 +11,7 @@
         rm: true
         command: ["-h", "{{ bmc_address }}", "-u", "{{ bmc_user }}", "-p", "{{ bmc_password }}", "-v"]
       register: drac_version
+      delegate_to: localhost
 
 - name: Using iDRAC ISO method for 13G and below
   include_tasks: dell_idrac.yml

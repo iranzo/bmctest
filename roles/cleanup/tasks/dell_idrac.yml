@@ -9,3 +9,4 @@
         state: started
         rm: true
         command: ["-h", "{{ bmc_address }}", "-u", "{{ bmc_user }}", "-p", "{{ bmc_password }}", "-d"]
+      delegate_to: localhost

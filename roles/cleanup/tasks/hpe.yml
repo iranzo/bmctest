@@ -1,5 +1,5 @@
 ---
-- name: Umount Live ISO, Boot into Live ISO (HPE servers)
+- name: Umount Live ISO (HPE servers)
   block:
     - name: HPE disconnect existing Virtual Media
       hpilo_boot:

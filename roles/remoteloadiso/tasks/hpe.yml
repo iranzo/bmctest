@@ -1,5 +1,5 @@
 ---
-- name: Mount Live ISO, Boot into Live ISO (HPE servers)
+- name: Mount  ISO (HPE servers)
   block:
     - name: HPE disconnect existing Virtual Media
       hpilo_boot:
@@ -9,7 +9,7 @@
         state: disconnect
       delegate_to: localhost
 
-    - name: HPE task to boot a system using an ISO
+    - name: HPE task to connect ISO on system
       hpilo_boot:
         host: "{{ bmc_address }}"
         login: "{{ bmc_user }}"

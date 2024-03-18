@@ -72,23 +72,27 @@
   // The cornerstone, an `each` implementation, aka `forEach`.
   // Handles objects with the built-in `forEach`, arrays, and raw objects.
   // Delegates to **ECMAScript 5**'s native `forEach` if available.
-  var each = (_.each = _.forEach = function (obj, iterator, context) {
-    if (obj == null) return;
-    if (nativeForEach && obj.forEach === nativeForEach) {
-      obj.forEach(iterator, context);
-    } else if (obj.length === +obj.length) {
-      for (var i = 0, l = obj.length; i < l; i++) {
-        if (i in obj && iterator.call(context, obj[i], i, obj) === breaker)
-          return;
-      }
-    } else {
-      for (var key in obj) {
-        if (_.has(obj, key)) {
-          if (iterator.call(context, obj[key], key, obj) === breaker) return;
+  var each =
+    (_.each =
+    _.forEach =
+      function (obj, iterator, context) {
+        if (obj == null) return;
+        if (nativeForEach && obj.forEach === nativeForEach) {
+          obj.forEach(iterator, context);
+        } else if (obj.length === +obj.length) {
+          for (var i = 0, l = obj.length; i < l; i++) {
+            if (i in obj && iterator.call(context, obj[i], i, obj) === breaker)
+              return;
+          }
+        } else {
+          for (var key in obj) {
+            if (_.has(obj, key)) {
+              if (iterator.call(context, obj[key], key, obj) === breaker)
+                return;
+            }
+          }
         }
-      }
-    }
-  });
+      });
 
   // Return the results of applying the iterator to each element.
   // Delegates to **ECMAScript 5**'s native `map` if available.
@@ -105,25 +109,28 @@
 
   // **Reduce** builds up a single result from a list of values, aka `inject`,
   // or `foldl`. Delegates to **ECMAScript 5**'s native `reduce` if available.
-  _.reduce = _.foldl = _.inject = function (obj, iterator, memo, context) {
-    var initial = arguments.length > 2;
-    if (obj == null) obj = [];
-    if (nativeReduce && obj.reduce === nativeReduce) {
-      if (context) iterator = _.bind(iterator, context);
-      return initial ? obj.reduce(iterator, memo) : obj.reduce(iterator);
-    }
-    each(obj, function (value, index, list) {
-      if (!initial) {
-        memo = value;
-        initial = true;
-      } else {
-        memo = iterator.call(context, memo, value, index, list);
-      }
-    });
-    if (!initial)
-      throw new TypeError("Reduce of empty array with no initial value");
-    return memo;
-  };
+  _.reduce =
+    _.foldl =
+    _.inject =
+      function (obj, iterator, memo, context) {
+        var initial = arguments.length > 2;
+        if (obj == null) obj = [];
+        if (nativeReduce && obj.reduce === nativeReduce) {
+          if (context) iterator = _.bind(iterator, context);
+          return initial ? obj.reduce(iterator, memo) : obj.reduce(iterator);
+        }
+        each(obj, function (value, index, list) {
+          if (!initial) {
+            memo = value;
+            initial = true;
+          } else {
+            memo = iterator.call(context, memo, value, index, list);
+          }
+        });
+        if (!initial)
+          throw new TypeError("Reduce of empty array with no initial value");
+        return memo;
+      };
 
   // The right-associative version of reduce, also known as `foldr`.
   // Delegates to **ECMAScript 5**'s native `reduceRight` if available.
@@ -199,18 +206,21 @@
   // Determine if at least one element in the object matches a truth test.
   // Delegates to **ECMAScript 5**'s native `some` if available.
   // Aliased as `any`.
-  var any = (_.some = _.any = function (obj, iterator, context) {
-    iterator || (iterator = _.identity);
-    var result = false;
-    if (obj == null) return result;
-    if (nativeSome && obj.some === nativeSome)
-      return obj.some(iterator, context);
-    each(obj, function (value, index, list) {
-      if (result || (result = iterator.call(context, value, index, list)))
-        return breaker;
-    });
-    return !!result;
-  });
+  var any =
+    (_.some =
+    _.any =
+      function (obj, iterator, context) {
+        iterator || (iterator = _.identity);
+        var result = false;
+        if (obj == null) return result;
+        if (nativeSome && obj.some === nativeSome)
+          return obj.some(iterator, context);
+        each(obj, function (value, index, list) {
+          if (result || (result = iterator.call(context, value, index, list)))
+            return breaker;
+        });
+        return !!result;
+      });
 
   // Determine if a given value is included in the array or object using `===`.
   // Aliased as `contains`.
@@ -231,7 +241,7 @@
     return _.map(obj, function (value) {
       return (_.isFunction(method) ? method || value : value[method]).apply(
         value,
-        args
+        args,
       );
     });
   };
@@ -302,7 +312,7 @@
           b = right.criteria;
         return a < b ? -1 : a > b ? 1 : 0;
       }),
-      "value"
+      "value",
     );
   };
 
@@ -402,7 +412,7 @@
         memo[memo.length] = value;
         return memo;
       },
-      []
+      [],
     );
   };
 
@@ -429,7 +439,7 @@
         }
         return memo;
       },
-      []
+      [],
     );
     return result;
   };
@@ -1075,7 +1085,7 @@
           delete wrapped[0];
         return result(wrapped, this._chain);
       };
-    }
+    },
   );
 
   // Add all accessor Array functions to the wrapper.
@@ -1096,4 +1106,4 @@
   wrapper.prototype.value = function () {
     return this._wrapped;
   };
-}.call(this));
+}).call(this);

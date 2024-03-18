@@ -79,7 +79,7 @@ jQuery.fn.highlightText = function (text, className) {
         if (isInSVG) {
           span = document.createElementNS(
             "http://www.w3.org/2000/svg",
-            "tspan"
+            "tspan",
           );
         } else {
           span = document.createElement("span");
@@ -90,14 +90,14 @@ jQuery.fn.highlightText = function (text, className) {
           span,
           node.parentNode.insertBefore(
             document.createTextNode(val.substr(pos + text.length)),
-            node.nextSibling
-          )
+            node.nextSibling,
+          ),
         );
         node.nodeValue = val.substr(0, pos);
         if (isInSVG) {
           var rect = document.createElementNS(
             "http://www.w3.org/2000/svg",
-            "rect"
+            "rect",
           );
           var bbox = node.parentElement.getBBox();
           rect.x.baseVal.value = bbox.x;
@@ -194,7 +194,7 @@ var Documentation = {
       this.TRANSLATIONS[key] = catalog.messages[key];
     this.PLURAL_EXPR = new Function(
       "n",
-      "return +(" + catalog.plural_expr + ")"
+      "return +(" + catalog.plural_expr + ")",
     );
     this.LOCALE = catalog.locale;
   },
@@ -248,7 +248,7 @@ var Documentation = {
         '<p class="highlight-link"><a href="javascript:Documentation.' +
           'hideSearchWords()">' +
           _("Hide Search Matches") +
-          "</a></p>"
+          "</a></p>",
       ).appendTo($("#searchbox"));
     }
   },

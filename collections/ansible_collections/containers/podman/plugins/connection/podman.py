@@ -168,7 +168,7 @@ class Connection(ConnectionBase):
 
     @ensure_connect
     def exec_command(self, cmd, in_data=None, sudoable=False):
-        """ run specified command in a running OCI container using podman """
+        """run specified command in a running OCI container using podman"""
         super(Connection, self).exec_command(cmd, in_data=in_data, sudoable=sudoable)
 
         # shlex.split has a bug with text strings on Python-2.6 and can only handle text strings on Python-3
@@ -183,7 +183,7 @@ class Connection(ConnectionBase):
         return rc, stdout, stderr
 
     def put_file(self, in_path, out_path):
-        """ Place a local file located in 'in_path' inside container at 'out_path' """
+        """Place a local file located in 'in_path' inside container at 'out_path'"""
         super(Connection, self).put_file(in_path, out_path)
         display.vvv("PUT %s TO %s" % (in_path, out_path), host=self._container_id)
         if not self._mount_point or self.user:
@@ -222,7 +222,7 @@ class Connection(ConnectionBase):
             )
 
     def fetch_file(self, in_path, out_path):
-        """ obtain file specified via 'in_path' from the container and place it at 'out_path' """
+        """obtain file specified via 'in_path' from the container and place it at 'out_path'"""
         super(Connection, self).fetch_file(in_path, out_path)
         display.vvv("FETCH %s TO %s" % (in_path, out_path), host=self._container_id)
         if not self._mount_point:
@@ -246,7 +246,7 @@ class Connection(ConnectionBase):
             )
 
     def close(self):
-        """ unmount container's filesystem """
+        """unmount container's filesystem"""
         super(Connection, self).close()
         # we actually don't need to unmount since the container is mounted anyway
         # rc, stdout, stderr = self._podman("umount")

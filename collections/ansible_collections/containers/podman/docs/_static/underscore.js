@@ -85,15 +85,19 @@
     exports._ = b;
   } else r._ = b;
   b.VERSION = "1.3.1";
-  var j = (b.each = b.forEach = function (a, c, d) {
-    if (a != null)
-      if (w && a.forEach === w) a.forEach(c, d);
-      else if (a.length === +a.length)
-        for (var e = 0, f = a.length; e < f; e++) {
-          if (e in a && c.call(d, a[e], e, a) === n) break;
-        }
-      else for (e in a) if (b.has(a, e) && c.call(d, a[e], e, a) === n) break;
-  });
+  var j =
+    (b.each =
+    b.forEach =
+      function (a, c, d) {
+        if (a != null)
+          if (w && a.forEach === w) a.forEach(c, d);
+          else if (a.length === +a.length)
+            for (var e = 0, f = a.length; e < f; e++) {
+              if (e in a && c.call(d, a[e], e, a) === n) break;
+            }
+          else
+            for (e in a) if (b.has(a, e) && c.call(d, a[e], e, a) === n) break;
+      });
   b.map = b.collect = function (a, c, b) {
     var e = [];
     if (a == null) return e;
@@ -104,17 +108,21 @@
     if (a.length === +a.length) e.length = a.length;
     return e;
   };
-  b.reduce = b.foldl = b.inject = function (a, c, d, e) {
-    var f = arguments.length > 2;
-    a == null && (a = []);
-    if (y && a.reduce === y)
-      return e && (c = b.bind(c, e)), f ? a.reduce(c, d) : a.reduce(c);
-    j(a, function (a, b, i) {
-      f ? (d = c.call(e, d, a, b, i)) : ((d = a), (f = true));
-    });
-    if (!f) throw new TypeError("Reduce of empty array with no initial value");
-    return d;
-  };
+  b.reduce =
+    b.foldl =
+    b.inject =
+      function (a, c, d, e) {
+        var f = arguments.length > 2;
+        a == null && (a = []);
+        if (y && a.reduce === y)
+          return e && (c = b.bind(c, e)), f ? a.reduce(c, d) : a.reduce(c);
+        j(a, function (a, b, i) {
+          f ? (d = c.call(e, d, a, b, i)) : ((d = a), (f = true));
+        });
+        if (!f)
+          throw new TypeError("Reduce of empty array with no initial value");
+        return d;
+      };
   b.reduceRight = b.foldr = function (a, c, d, e) {
     var f = arguments.length > 2;
     a == null && (a = []);
@@ -159,16 +167,19 @@
     });
     return e;
   };
-  var E = (b.some = b.any = function (a, c, d) {
-    c || (c = b.identity);
-    var e = false;
-    if (a == null) return e;
-    if (C && a.some === C) return a.some(c, d);
-    j(a, function (a, b, h) {
-      if (e || (e = c.call(d, a, b, h))) return n;
-    });
-    return !!e;
-  });
+  var E =
+    (b.some =
+    b.any =
+      function (a, c, d) {
+        c || (c = b.identity);
+        var e = false;
+        if (a == null) return e;
+        if (C && a.some === C) return a.some(c, d);
+        j(a, function (a, b, h) {
+          if (e || (e = c.call(d, a, b, h))) return n;
+        });
+        return !!e;
+      });
   b.include = b.contains = function (a, c) {
     var b = false;
     if (a == null) return b;
@@ -232,7 +243,7 @@
             d = b.criteria;
           return c < d ? -1 : c > d ? 1 : 0;
         }),
-      "value"
+      "value",
     );
   };
   b.groupBy = function (a, c) {
@@ -260,12 +271,12 @@
     return !a
       ? []
       : a.toArray
-      ? a.toArray()
-      : b.isArray(a)
-      ? i.call(a)
-      : b.isArguments(a)
-      ? i.call(a)
-      : b.values(a);
+        ? a.toArray()
+        : b.isArray(a)
+          ? i.call(a)
+          : b.isArguments(a)
+            ? i.call(a)
+            : b.values(a);
   };
   b.size = function (a) {
     return b.toArray(a).length;
@@ -297,7 +308,7 @@
         a[a.length] = e;
         return a;
       },
-      []
+      [],
     );
   };
   b.without = function (a) {
@@ -313,7 +324,7 @@
           (d[d.length] = g), (e[e.length] = a[h]);
         return d;
       },
-      []
+      [],
     );
     return e;
   };
@@ -677,4 +688,4 @@
   m.prototype.value = function () {
     return this._wrapped;
   };
-}.call(this));
+}).call(this);

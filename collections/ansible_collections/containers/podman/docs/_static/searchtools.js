@@ -67,7 +67,7 @@ var Search = {
     if (docContent === undefined) {
       console.warn(
         "Content block not found. Sphinx search tries to obtain it " +
-          "via '[role=main]'. Could you check your theme or template."
+          "via '[role=main]'. Could you check your theme or template.",
       );
       return "";
     }
@@ -209,16 +209,16 @@ var Search = {
     for (i = 0; i < objectterms.length; i++) {
       var others = [].concat(
         objectterms.slice(0, i),
-        objectterms.slice(i + 1, objectterms.length)
+        objectterms.slice(i + 1, objectterms.length),
       );
       results = results.concat(
-        this.performObjectSearch(objectterms[i], others)
+        this.performObjectSearch(objectterms[i], others),
       );
     }
 
     // lookup as search terms in fulltext
     results = results.concat(
-      this.performTermsSearch(searchterms, excluded, terms, titleterms)
+      this.performTermsSearch(searchterms, excluded, terms, titleterms),
     );
 
     // let the scorer override scores with a custom scoring function
@@ -279,7 +279,7 @@ var Search = {
         listItem.append(
           $("<a/>")
             .attr("href", linkUrl + highlightstring + item[2])
-            .html(item[1])
+            .html(item[1]),
         );
         if (item[3]) {
           listItem.append($("<span> (" + item[3] + ")</span>"));
@@ -295,7 +295,7 @@ var Search = {
               var data = jqxhr.responseText;
               if (data !== "" && data !== undefined) {
                 listItem.append(
-                  Search.makeSearchSummary(data, searchterms, hlterms)
+                  Search.makeSearchSummary(data, searchterms, hlterms),
                 );
               }
               Search.output.append(listItem);
@@ -319,14 +319,14 @@ var Search = {
         if (!resultCount)
           Search.status.text(
             _(
-              "Your search did not match any documents. Please make sure that all words are spelled correctly and that you've selected enough categories."
-            )
+              "Your search did not match any documents. Please make sure that all words are spelled correctly and that you've selected enough categories.",
+            ),
           );
         else
           Search.status.text(
             _(
-              "Search finished, found %s page(s) matching the search query."
-            ).replace("%s", resultCount)
+              "Search finished, found %s page(s) matching the search query.",
+            ).replace("%s", resultCount),
           );
         Search.status.fadeIn(500);
       }
@@ -518,7 +518,7 @@ var Search = {
         var score = $u.max(
           $u.map(fileMap[file], function (w) {
             return scoreMap[file][w];
-          })
+          }),
         );
         results.push([
           docnames[file],

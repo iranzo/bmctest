@@ -115,7 +115,7 @@
         var f = arguments.length > 2;
         a == null && (a = []);
         if (y && a.reduce === y)
-          return e && (c = b.bind(c, e)), f ? a.reduce(c, d) : a.reduce(c);
+          return (e && (c = b.bind(c, e)), f ? a.reduce(c, d) : a.reduce(c));
         j(a, function (a, b, i) {
           f ? (d = c.call(e, d, a, b, i)) : ((d = a), (f = true));
         });
@@ -128,7 +128,8 @@
     a == null && (a = []);
     if (z && a.reduceRight === z)
       return (
-        e && (c = b.bind(c, e)), f ? a.reduceRight(c, d) : a.reduceRight(c)
+        e && (c = b.bind(c, e)),
+        f ? a.reduceRight(c, d) : a.reduceRight(c)
       );
     var g = b.toArray(a).reverse();
     e && !f && (c = b.bind(c, e));
@@ -137,7 +138,7 @@
   b.find = b.detect = function (a, c, b) {
     var e;
     E(a, function (a, g, h) {
-      if (c.call(b, a, g, h)) return (e = a), true;
+      if (c.call(b, a, g, h)) return ((e = a), true);
     });
     return e;
   };
@@ -321,7 +322,7 @@
       d,
       function (d, g, h) {
         if (0 == h || (c === true ? b.last(d) != g : !b.include(d, g)))
-          (d[d.length] = g), (e[e.length] = a[h]);
+          ((d[d.length] = g), (e[e.length] = a[h]));
         return d;
       },
       [],
@@ -360,7 +361,7 @@
   b.indexOf = function (a, c, d) {
     if (a == null) return -1;
     var e;
-    if (d) return (d = b.sortedIndex(a, c)), a[d] === c ? d : -1;
+    if (d) return ((d = b.sortedIndex(a, c)), a[d] === c ? d : -1);
     if (p && a.indexOf === p) return a.indexOf(c);
     for (d = 0, e = a.length; d < e; d++) if (d in a && a[d] === c) return d;
     return -1;
@@ -381,7 +382,7 @@
       f < e;
 
     )
-      (g[f++] = a), (a += d);
+      ((g[f++] = a), (a += d));
     return g;
   };
   var F = function () {};
